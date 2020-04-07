@@ -108,7 +108,7 @@ void Introducere(int x[], int&n, int p, int nou) {
 }
 
 
-void Stergere(int x[], int& n,int p) {
+void Stergere(int x[], int&n,int p) {
   
 
     for (int i = p; i < n - 1; i++)

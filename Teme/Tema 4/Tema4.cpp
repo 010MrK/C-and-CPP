@@ -8,24 +8,98 @@ using namespace std;
 void FunctieAfisare(int[], int);
 void CitireCifreInputUnu(int[], int&);
 void CitireCifreInputDoi(int[], int&);
-void SumaElementelorUnuiVector(int[], int);         //P1
-void CautareaElementuluiMinim(int[], int);          //P2
-void OrdineaCrescatoareSauDesc(int[], int);         //P3
-void OrdonareCrescatoareSortareLiniara(int[], int); //P4
-void OrdonareCrescatoareSortareBubble(int[], int); //P5
+void SumaElementelorUnuiVector(int[], int);                         //P1
+void CautareaElementuluiMinim(int[], int);                          //P2
+void OrdineaCrescatoareSauDesc(int[], int);                         //P3
+void OrdonareCrescatoareSortareLiniara(int[], int);                 //P4
+void OrdonareCrescatoareSortareBubble(int[], int);                  //P4
+void SumaSiDiferentaADoiVectori(int[], int, int[], int, int[]);     //P5
+void InterclasareVectori(int[], int, int[], int, int[]);            //P6
+void StergereElementDePePozitiaK(int[], int&, int);                 //P7
+void InserareElementPePozitiaK(int[], int&, int, int);                   //P8
 
 int main() {
     int x[200];
     int y[200];
+    int z[200];
     int nX;
     int nY;
     CitireCifreInputUnu(x, nX);
-    CitireCifreInputDoi(y, nY);
+    // CitireCifreInputDoi(y, nY);
     // SumaElementelorUnuiVector(x, n);
     // CautareaElementuluiMinim(x, n);
     // OrdineaCrescatoareSauDesc(x, n);
     // OrdonareCrescatoareSortareLiniara(x, n);
     // OrdonareCrescatoareSortareBubble(x, n);
+    // StergereElementDePePozitiaK(x, nX, 3);
+    // SumaSiDiferentaADoiVectori(x, nX, y, nY, z);
+    // InterclasareVectori(x, nX, y, nY, z);
+    InserareElementPePozitiaK(x, nX, 3, 111);
+}
+
+void InserareElementPePozitiaK(int x[], int&n,int p, int nou) {
+    for (int i = n - 1; i >= p; i--)
+        x[i + 1] = x[i];
+
+    x[p] = nou;
+    n++;
+
+    FunctieAfisare(x, n);
+}
+
+void StergereElementDePePozitiaK(int x[], int&n,int p) {
+    for (int i = p; i < n - 1; i++)
+    {
+        x[i] = x[i + 1];
+    }
+    n--;
+    FunctieAfisare(x, n);
+}
+
+void InterclasareVectori(int x[], int nX, int y[], int nY, int z[]) {
+    int dimensiuneZ = nX + nY;
+
+    for (int i = 0; i < nX; i++) {
+        z[i] = x[i];
+    }
+    for (int j = nX; j < nX + nY; j++) {
+        z[j] = y[j - nX];
+    }
+
+    cout << endl << endl << "Interclasare: " << endl; 
+    OrdonareCrescatoareSortareBubble(z, dimensiuneZ);
+}
+
+void SumaSiDiferentaADoiVectori(int x[], int nX, int y[], int nY, int z[]) {
+    char alegere;
+    cout << "Doriti sa calculati [s]uma sau [d]iferenta? : ";
+    cin >> alegere;
+
+    switch(alegere) {
+        case 's':
+            if(nX == nY) {
+
+            for(int i = 0; i < nX; i++) {
+                z[i] = x[i] + y[i];
+            }
+            } else {
+                cout << "Vectorii au dimensiuni diferite!" << endl;
+            }
+            break;
+        case 'd':
+            if(nX == nY) {
+
+            for(int i = 0; i < nX; i++) {
+                z[i] = x[i] - y[i];
+            }
+            } else {
+                cout << "Vectorii au dimensiuni diferite!" << endl;
+            }
+            break;
+        default:
+            cout << "Alegere gresita.Alege s-suma sau d-diferenta!" << endl;
+    }
+    FunctieAfisare(z, nX);
 }
 
 void OrdonareCrescatoareSortareBubble(int x[], int n) {

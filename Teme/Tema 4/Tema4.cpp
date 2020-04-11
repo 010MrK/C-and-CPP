@@ -17,25 +17,31 @@ void SumaSiDiferentaADoiVectori(int[], int, int[], int, int[]);     //P5
 void InterclasareVectori(int[], int, int[], int, int[]);            //P6
 void StergereElementDePePozitiaK(int[], int&, int);                 //P7
 void InserareElementPePozitiaK(int[], int&, int, int);              //P8
+<<<<<<< HEAD
 void stergereElementePrime(int[], int);                             //P9 nu am rezolvat
 void SortareVectorElementePrime(int[], int, int);                          //P10
+=======
+void StergereElementePrime(int[], int);                            //P9
+
+>>>>>>> 59d72fa3aca355695ccad47a9d222a543084e045
 
 int main() {
     int x[200];
-    int y[200];
-    int z[200];
+    //int y[200];
+    //int z[200];
     int nX;
-    int nY;
+    //int nY;
     CitireCifreInputUnu(x, nX);
     // CitireCifreInputDoi(y, nY);
     // SumaElementelorUnuiVector(x, n);
     // CautareaElementuluiMinim(x, n);
-    // OrdineaCrescatoareSauDesc(x, n);
+    // OrdineaCrescatoareSauDesc(x, n); 
     // OrdonareCrescatoareSortareLiniara(x, n);
     // OrdonareCrescatoareSortareBubble(x, n);
     // StergereElementDePePozitiaK(x, nX, 3);
     // SumaSiDiferentaADoiVectori(x, nX, y, nY, z);
     // InterclasareVectori(x, nX, y, nY, z);
+<<<<<<< HEAD
     //InserareElementPePozitiaK(x, nX, 3, 111);
     //stergereElementePrime(x, nX);
     SortareVectorElementePrime(x, 1, 10);
@@ -74,6 +80,26 @@ void VerificareNumerePrime(int x[200]) {
 
 void stergereElementePrime(int x[], int n) {
 
+=======
+    // InserareElementPePozitiaK(x, nX, 3, 111);
+    StergereElementePrime(x, nX); 
+}
+
+void StergereElementePrime(int x[], int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 2; j < x[i]; j++) {
+
+            if (x[i] % j == 0) {
+
+                for (int k = i; k < n - 1; k++) {
+                    x[i] = x[i + 1];
+                }
+                n--;
+            } 
+        }
+    }
+    FunctieAfisare(x, n);
+>>>>>>> 59d72fa3aca355695ccad47a9d222a543084e045
 }
 
 void InserareElementPePozitiaK(int x[], int&n,int p, int nou) {

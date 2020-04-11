@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <climits>
 using namespace std;
+ifstream read("Input.txt");
 
 void FunctieAfisare(int[], int);
 void CitireCifreInputUnu(int[], int&);
@@ -17,35 +18,97 @@ void SumaSiDiferentaADoiVectori(int[], int, int[], int, int[]);     //P5
 void InterclasareVectori(int[], int, int[], int, int[]);            //P6
 void StergereElementDePePozitiaK(int[], int&, int);                 //P7
 void InserareElementPePozitiaK(int[], int&, int, int);              //P8
-<<<<<<< HEAD
-void stergereElementePrime(int[], int);                             //P9 nu am rezolvat
+int Prim(int);
+void Stergere(int[], int&, int);
+void Solutie(int[], int&);                          //P9 nu am rezolvat
 void SortareVectorElementePrime(int[], int, int);                          //P10
-=======
-void StergereElementePrime(int[], int);                            //P9
-
->>>>>>> 59d72fa3aca355695ccad47a9d222a543084e045
+void Interclasare(int[], int, int[], int, int[], int&);
 
 int main() {
     int x[200];
-    //int y[200];
-    //int z[200];
+    int y[200];
+    int z[200];
     int nX;
-    //int nY;
+    int nY;
+    int n, m, k;
     CitireCifreInputUnu(x, nX);
+    CitireCifreInputUnu(y, nY);
+    OrdonareCrescatoareSortareBubble(x, nX);
+
+    OrdonareCrescatoareSortareBubble(y, nY);
+    Interclasare(x, nX, y, nY, z, k);
+    FunctieAfisare(z, k);
     // CitireCifreInputDoi(y, nY);
     // SumaElementelorUnuiVector(x, n);
     // CautareaElementuluiMinim(x, n);
-    // OrdineaCrescatoareSauDesc(x, n); 
+    // OrdineaCrescatoareSauDesc(x, n);
     // OrdonareCrescatoareSortareLiniara(x, n);
     // OrdonareCrescatoareSortareBubble(x, n);
     // StergereElementDePePozitiaK(x, nX, 3);
     // SumaSiDiferentaADoiVectori(x, nX, y, nY, z);
     // InterclasareVectori(x, nX, y, nY, z);
-<<<<<<< HEAD
     //InserareElementPePozitiaK(x, nX, 3, 111);
-    //stergereElementePrime(x, nX);
-    SortareVectorElementePrime(x, 1, 10);
-    FunctieAfisare(x, nX);
+    //Solutie(x, nX);
+    //SortareVectorElementePrime(x, 1, 10);
+}
+
+void Interclasare(int x[], int n, int y[], int m,int v[], int&k) {
+    int i = 0, j = 0;
+    k = 0;
+    while(i < n && j < m) {
+        if (x[i] == y[j]) {
+            v[k] = x[i];
+            i++;j++;k++;
+        }
+        else{
+            if (x[i] < y[j]) {
+                v[k] = x[i];
+                i++;k++;
+
+            }
+            else{
+               v[k]=y[j];
+                k++;
+                j++;
+            }
+        }
+    }
+    while (i < n) {
+        v[k] = x[i];
+        k++;i++;
+    }
+    while (j < m) {
+        v[k] = y[j];
+        k++;j++;
+    }
+}
+
+int Prim(int n ) {
+    if (n==1 || n==0){
+        return 0;
+    }
+    for (int i=2 ;i<=n/2;i++)
+        if (n%2==0)
+            return 0;
+    return 1;
+}
+
+void Stergere(int x[], int&n, int p) {
+    for (int i = p; i < n - 1; i++)
+    {
+        x[i] = x[i + 1];
+    }
+    n--;
+}
+
+void Solutie(int x[] , int&n) {
+    for (int i = 0; i < n; i++) {
+        if (Prim(x[i])) {
+            Stergere(x, n, i);
+            i--;
+        }
+    }
+    FunctieAfisare(x, n);
 }
 
 void SortareVectorElementePrime(int x[], int a, int b) {
@@ -76,30 +139,6 @@ void VerificareNumerePrime(int x[200]) {
             cout << x[i] << " number is not prime" << endl;
         }
     }
-}
-
-void stergereElementePrime(int x[], int n) {
-
-=======
-    // InserareElementPePozitiaK(x, nX, 3, 111);
-    StergereElementePrime(x, nX); 
-}
-
-void StergereElementePrime(int x[], int n) {
-    for (int i = 0; i < n; i++) {
-        for (int j = 2; j < x[i]; j++) {
-
-            if (x[i] % j == 0) {
-
-                for (int k = i; k < n - 1; k++) {
-                    x[i] = x[i + 1];
-                }
-                n--;
-            } 
-        }
-    }
-    FunctieAfisare(x, n);
->>>>>>> 59d72fa3aca355695ccad47a9d222a543084e045
 }
 
 void InserareElementPePozitiaK(int x[], int&n,int p, int nou) {
@@ -184,7 +223,6 @@ void OrdonareCrescatoareSortareBubble(int x[], int n) {
         }
 
     } while (flag == 1);
-    FunctieAfisare(x, n);
 }
 
 void OrdonareCrescatoareSortareLiniara(int x[], int n) {
@@ -251,12 +289,12 @@ void SumaElementelorUnuiVector(int x[], int n) {
 }
 
 void CitireCifreInputUnu(int x[], int&n) {
-    ifstream read("Input.txt");
+
     read >> n;
     for (int i = 0; i < n; i++) {
         read >> x[i];
     }
-    FunctieAfisare(x, n);
+
 }
 
 void CitireCifreInputDoi(int x[], int&n) {

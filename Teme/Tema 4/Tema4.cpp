@@ -16,7 +16,9 @@ void OrdonareCrescatoareSortareBubble(int[], int);                  //P4
 void SumaSiDiferentaADoiVectori(int[], int, int[], int, int[]);     //P5
 void InterclasareVectori(int[], int, int[], int, int[]);            //P6
 void StergereElementDePePozitiaK(int[], int&, int);                 //P7
-void InserareElementPePozitiaK(int[], int&, int, int);                   //P8
+void InserareElementPePozitiaK(int[], int&, int, int);              //P8
+void stergereElementePrime(int[], int);                             //P9 nu am rezolvat
+void SortareVectorElementePrime(int[], int, int);                          //P10
 
 int main() {
     int x[200];
@@ -34,7 +36,44 @@ int main() {
     // StergereElementDePePozitiaK(x, nX, 3);
     // SumaSiDiferentaADoiVectori(x, nX, y, nY, z);
     // InterclasareVectori(x, nX, y, nY, z);
-    InserareElementPePozitiaK(x, nX, 3, 111);
+    //InserareElementPePozitiaK(x, nX, 3, 111);
+    //stergereElementePrime(x, nX);
+    SortareVectorElementePrime(x, 1, 10);
+    FunctieAfisare(x, nX);
+}
+
+void SortareVectorElementePrime(int x[], int a, int b) {
+    int contorIndex = 0;
+    for(int i = a; i <= b; i++) {
+        if(i % 2 != 0 || i != 2) {
+
+        }
+    }
+}
+
+void VerificareNumerePrime(int x[200]) {
+    bool flag = false;
+
+    for (int i = 0; i < 200; i++) {
+        for (int j = 2; j < x[i]; j++) {
+            if (x[i] % j == 0) {
+                flag = true;
+                break;
+            } else {
+                flag = false;
+            }
+        }
+
+        if (flag == false && x[i] > 1) {
+            cout << x[i] << " is prime" << endl;
+        } else {
+            cout << x[i] << " number is not prime" << endl;
+        }
+    }
+}
+
+void stergereElementePrime(int x[], int n) {
+
 }
 
 void InserareElementPePozitiaK(int x[], int&n,int p, int nou) {
@@ -53,7 +92,7 @@ void StergereElementDePePozitiaK(int x[], int&n,int p) {
         x[i] = x[i + 1];
     }
     n--;
-    FunctieAfisare(x, n);
+    //FunctieAfisare(x, n);
 }
 
 void InterclasareVectori(int x[], int nX, int y[], int nY, int z[]) {
@@ -66,7 +105,7 @@ void InterclasareVectori(int x[], int nX, int y[], int nY, int z[]) {
         z[j] = y[j - nX];
     }
 
-    cout << endl << endl << "Interclasare: " << endl; 
+    cout << endl << endl << "Interclasare: " << endl;
     OrdonareCrescatoareSortareBubble(z, dimensiuneZ);
 }
 
@@ -79,9 +118,9 @@ void SumaSiDiferentaADoiVectori(int x[], int nX, int y[], int nY, int z[]) {
         case 's':
             if(nX == nY) {
 
-            for(int i = 0; i < nX; i++) {
-                z[i] = x[i] + y[i];
-            }
+                for(int i = 0; i < nX; i++) {
+                    z[i] = x[i] + y[i];
+                }
             } else {
                 cout << "Vectorii au dimensiuni diferite!" << endl;
             }
@@ -89,9 +128,9 @@ void SumaSiDiferentaADoiVectori(int x[], int nX, int y[], int nY, int z[]) {
         case 'd':
             if(nX == nY) {
 
-            for(int i = 0; i < nX; i++) {
-                z[i] = x[i] - y[i];
-            }
+                for(int i = 0; i < nX; i++) {
+                    z[i] = x[i] - y[i];
+                }
             } else {
                 cout << "Vectorii au dimensiuni diferite!" << endl;
             }

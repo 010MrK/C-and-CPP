@@ -18,7 +18,7 @@ int main() {
     int x[200];
     int c[200];
     CitireCifre(x);
-    DivizoriiUnuiNumar(x);
+    VerificareNumerePrime(x);
 
 
 }

@@ -1,7 +1,13 @@
 #include <iostream>
 using namespace std;
 
+void CifreEgale();
+
 int main() {
+    CifreEgale();
+}
+
+void CifreEgale() {
     int n, c;
     bool flag = true;
 

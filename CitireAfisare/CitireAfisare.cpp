@@ -25,7 +25,9 @@ int main() {
     //Introducere(x, n, 1, 11);
     //FrecventaPeCifre(77731221);
     //FunctieAfisare(x, n);
+    
     //FrecventaPeNumar(x, n);
+
     cout << CautareaBinara(x, n, 22);
 }
 
